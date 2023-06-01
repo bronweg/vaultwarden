@@ -34,5 +34,5 @@ Return the database string
 DB credentials secret name
 */}}
 {{ define "dbSecretName" }}
-{{- printf "%s%s" ( include "vaultwarden.fullname" . ) "dbSecretName" }}
+{{- printf "%s%s" ( include "vaultwarden.fullname" . ) "dbsecretname" }}
 {{- end -}}
