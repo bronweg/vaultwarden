@@ -166,6 +166,10 @@ database:
   ## @param database.dbName Database name
   ##
   dbName: ""
+  ## @param database.fromSecret Take the dbName, username and password from existing secret
+  ## This secret has to contain dbname, dbUsername and dbPassword
+  ## If database.fromExistingSecret exists in values, database.dbName, database.username and database.password will be ignored
+  fromExistingSecret: ""
   ## @param database.uriOverride Manually specify the DB connection string
   ##
   uriOverride: ""
