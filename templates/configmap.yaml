@@ -10,8 +10,6 @@ data:
   {{- if ne "default" .Values.database.type }}
   {{- if .Values.database.uriOverride }}
   DATABASE_URL: {{ .Values.database.uriOverride }}
-  {{- else }}
-  DATABASE_URL: {{ include "dbString" . | quote }}
   {{- end }}
   {{- end }}
   {{- if and .Values.smtp.host .Values.smtp.from | quote }}

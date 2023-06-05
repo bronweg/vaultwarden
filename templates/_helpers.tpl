@@ -26,7 +26,7 @@ Return a default application name.
 Return the database string
 */}}
 {{ define "dbString" }}
-{{- $var := print .Values.database.type "://${dbUsername}:${dbPassword}@" .Values.database.host (include "dbPort" . ) "/${dbName}" }}
+{{- $var := print .Values.database.type "://" .Values.database.username ":" .Values.database.password "@" .Values.database.host (include "dbPort" . ) "/" .Values.database.dbName }}
 {{- printf "%s" $var }}
 {{- end -}}
 
@@ -34,5 +34,9 @@ Return the database string
 DB credentials secret name
 */}}
 {{ define "dbSecretName" }}
+{{- if .Values.database.fromExistingSecret }}
+{{- printf "%s" .Values.database.fromExistingSecret }}
+{{- else }}
 {{- printf "%s%s" ( include "vaultwarden.fullname" . ) "dbsecretname" }}
+{{- end }}
 {{- end -}}
