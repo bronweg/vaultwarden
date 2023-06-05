@@ -103,7 +103,10 @@ ingress:
   nginxIngressAnnotations: true
   ## @param ingress.additionalAnnotations Additional annotations for the ingress resource.
   ##
-  additionalAnnotations: {}
+  additionalAnnotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/tls-acme: 'true'
+    nginx.ingress.kubernetes.io/ssl-passthrough: 'true'
   ## @param ingress.tls Enable TLS on the ingress resource.
   ##
   tls: true
